@@ -14,10 +14,13 @@ class ListProperty extends Component {
                    properties.map((property) => {
                     const { physical, financial } = property;
                     const yearBuilt = physical ? physical.yearBuilt: "Not Available";
-                    const listPrice = financial? Number.parseFloat(financial.listPrice).toFixed(2) : "Not Available";
-                    const monthlyRent = financial? Number.parseFloat(financial.monthlyRent).toFixed(2) : "Not Available";
-                    const grossYield = Math.floor(((monthlyRent*12)/(listPrice)) * 100) + '%';
-
+                    const listPrice = financial? Number.parseFloat(financial.listPrice).toFixed(2) : "-Please call";
+                    const monthlyRent = financial? Number.parseFloat(financial.monthlyRent).toFixed(2) : "-Please call";
+                    let grossYield = 'NA';
+                    if (listPrice && financial) {
+                        grossYield = Math.floor(((monthlyRent*12)/(listPrice)) * 100) + '%';
+                    }
+                   
                    return isGrid? <GridSingleProperty
                                     key={property.id}
                                     id={property.id}

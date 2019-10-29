@@ -4,6 +4,7 @@
     min-width: 300px;
     margin: 5px;
     width: 300px;
+    box-shadow: 3px 3px #FF9340;
 }
 
 .property .img-block {

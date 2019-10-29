@@ -39,8 +39,11 @@ class App extends Component {
     const { viewToDisplay, setView } = this.props;
     return (
 (      <Container className="App">
-          <Row className="property-row">   
-            <Col md={{span:4, offset:8}} className="btn-block">
+          <Row className="property-row"> 
+            <Col className="pl-4" md={6}>
+              <h2> Showing Properties </h2>
+            </Col>
+            <Col md={4} className="btn-block d-flex">
               <button className="btn btn-secondary" onClick={() => setView('list')}>List View</button>
               <button className="btn btn-primary" onClick={() => setView('grid')}>Grid View</button>
             </Col>

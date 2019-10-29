@@ -12,6 +12,7 @@
 
 .btn-block {
   padding: 8px;
+  flex-direction: row-reverse;
 }
 
 .btn-block > .btn {

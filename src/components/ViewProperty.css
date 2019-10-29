@@ -6,3 +6,10 @@
 .images {
     padding: 15px 0px;
 }
+
+.address-block {
+    height: fit-content;
+    border: 1px solid #cccc;
+    border-top: 4px solid #D1CFFF;
+    margin-top: 15px;
+}
