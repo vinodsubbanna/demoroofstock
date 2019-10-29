@@ -1,5 +1,5 @@
 import helper from "../helper";
-import { FETCH_ALL_PROPERTIES, GET_PROPERTY_CLICKED } from '../types'
+import { FETCH_ALL_PROPERTIES, GET_PROPERTY_CLICKED, GET_VIEW_TO_DISPLAY } from '../types'
 import propertyData from '.././testdata.json';
 import store from '../server/store';
 
@@ -18,9 +18,14 @@ export const fetchAllProperties = () => ({
 export const getPropertyClicked = (id) => (dispatch) => {
     const properties = store.getState().allProperties.properties;
     const property = properties.filter((prop) => prop.id === id);
-    
+
     dispatch({
         type: GET_PROPERTY_CLICKED,
         payload: property[0]
     })
 }
+
+export const setView = (view) => ({
+    type: GET_VIEW_TO_DISPLAY,
+    payload: view
+})

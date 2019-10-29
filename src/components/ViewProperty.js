@@ -17,7 +17,7 @@ export class ViewProperty extends Component {
 
         return (
             <Container className="property-details">
-            <Row className="float-right">
+            <Row className="float-right m-1">
                 <Link to="/">
                     <button className="btn btn-secondary">Back</button>
                 </Link>

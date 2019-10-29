@@ -1,7 +1,8 @@
 import { combineReducers } from 'redux';
-import { propertiesReducer, propertyInView } from './propertiesReducer';
+import { propertiesReducer, propertyInView, getViewForDisplay } from './propertiesReducer';
 
 export default combineReducers({
     allProperties: propertiesReducer,
-    propertyInView: propertyInView
+    propertyInView: propertyInView,
+    viewToDisplay: getViewForDisplay
 })

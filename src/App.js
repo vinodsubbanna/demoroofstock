@@ -3,26 +3,16 @@ import './App.css';
 import ListProperty from './components/ListProperty'
 import store from './server/store';
 import { Container, Row, Col } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { setView } from './actions';
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      gridOrList: 'grid'
-    }
-  }
 
-  handleClick = (gridOrList) => {
-    this.setState(prevState => ({
-      gridOrList: gridOrList
-    }));
-  }
-
-  ListorGridViewByFlag = () => {
-    const isGrid = this.state.gridOrList === 'grid' ? true: false;
+  ListorGridViewByFlag = (viewToDisplay) => {
+    const isGrid = viewToDisplay === 'grid' ? true: false;
     return isGrid ? 
       <Col className="property-grid">
-        {<ListProperty gridOrList={this.state.gridOrList}/>}
+        {<ListProperty gridOrList={viewToDisplay}/>}
       </Col> : 
       <Col md={12}>
         <table className="property-list"> 
@@ -37,25 +27,35 @@ class App extends Component {
             </tr>
         </thead>
         <tbody>
-          {<ListProperty gridOrList={this.state.gridOrList}/>}  
+          {<ListProperty gridOrList={viewToDisplay}/>}  
         </tbody> 
     </table>
     </Col>
   }
 
   render(){
+    const { viewToDisplay, setView } = this.props;
     return (
       <Container className="App">
         <Row className="property-row">   
           <Col md={{span:4, offset:8}} className="btn-block">
-            <button className="btn btn-secondary" onClick={() => this.handleClick('list')}>List View</button>
-            <button className="btn btn-primary" onClick={() => this.handleClick('grid')}>Grid View</button>
+            <button className="btn btn-secondary" onClick={() => setView('list')}>List View</button>
+            <button className="btn btn-primary" onClick={() => setView('grid')}>Grid View</button>
           </Col>
-        {this.ListorGridViewByFlag()}
+        {this.ListorGridViewByFlag(viewToDisplay)}
         </Row>
       </Container>
     );
   }
 }
 
-export default App;
+const mapStateToProps = (state) => ({
+  viewToDisplay: state.viewToDisplay,
+})
+
+const mapDispatchToProps = dispatch => ({
+  setView: (view) => dispatch(setView(view))
+});
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);
