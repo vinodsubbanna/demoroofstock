@@ -16,6 +16,7 @@ class ListProperty extends Component {
                     const yearBuilt = physical ? physical.yearBuilt: "Not Available";
                     const listPrice = financial? Number.parseFloat(financial.listPrice).toFixed(2) : "Not Available";
                     const monthlyRent = financial? Number.parseFloat(financial.monthlyRent).toFixed(2) : "Not Available";
+                    const grossYield = Math.floor(((monthlyRent*12)/(listPrice)) * 100) + '%';
 
                    return isGrid? <GridSingleProperty
                                     key={property.id}
@@ -25,6 +26,7 @@ class ListProperty extends Component {
                                     yearBuilt={yearBuilt}
                                     listPrice={listPrice}
                                     monthlyRent={monthlyRent}
+                                    grossYield={grossYield}
                                  /> : 
                                 <ListSingleProperty 
                                     key={property.id}
@@ -34,6 +36,7 @@ class ListProperty extends Component {
                                     yearBuilt={yearBuilt}
                                     listPrice={listPrice}
                                     monthlyRent={monthlyRent}
+                                    grossYield={grossYield}
                                 />
                    }) 
                 }

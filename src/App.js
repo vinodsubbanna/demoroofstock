@@ -5,6 +5,7 @@ import store from './server/store';
 import { Container, Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { setView } from './actions';
+import { fetchAllProperties } from './actions'
 
 class App extends Component {
 
@@ -23,6 +24,7 @@ class App extends Component {
                 <th>Year Built</th>
                 <th>List Price</th>
                 <th>Monthly Rent</th>
+                <th>Gross Yield</th>
                 <th>View Details</th>
             </tr>
         </thead>
@@ -36,21 +38,22 @@ class App extends Component {
   render(){
     const { viewToDisplay, setView } = this.props;
     return (
-      <Container className="App">
-        <Row className="property-row">   
-          <Col md={{span:4, offset:8}} className="btn-block">
-            <button className="btn btn-secondary" onClick={() => setView('list')}>List View</button>
-            <button className="btn btn-primary" onClick={() => setView('grid')}>Grid View</button>
-          </Col>
-        {this.ListorGridViewByFlag(viewToDisplay)}
-        </Row>
-      </Container>
+(      <Container className="App">
+          <Row className="property-row">   
+            <Col md={{span:4, offset:8}} className="btn-block">
+              <button className="btn btn-secondary" onClick={() => setView('list')}>List View</button>
+              <button className="btn btn-primary" onClick={() => setView('grid')}>Grid View</button>
+            </Col>
+          {this.ListorGridViewByFlag(viewToDisplay)}
+          </Row>
+        </Container>)
     );
   }
 }
 
 const mapStateToProps = (state) => ({
   viewToDisplay: state.viewToDisplay,
+  properties: state.allProperties
 })
 
 const mapDispatchToProps = dispatch => ({

@@ -14,6 +14,7 @@ render() {
             yearBuilt,
             listPrice,
             monthlyRent,
+            grossYield,
             getPropertyClicked
         } = this.props;
 
@@ -38,6 +39,9 @@ render() {
             <div className="financial">
                 List Price: <span>{`$${listPrice}`}</span> <br/>
                 Monthly Rent: <span>{`$${monthlyRent}`}</span>
+            </div>
+            <div className="grossYield">
+                Gross Yield: <span>{grossYield}</span>
             </div>
         </div>
     )

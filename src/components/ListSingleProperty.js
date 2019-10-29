@@ -13,6 +13,7 @@ class ListSingleProperty extends Component {
             yearBuilt,
             listPrice,
             monthlyRent,
+            grossYield,
             getPropertyClicked
         } = this.props;
 
@@ -24,7 +25,7 @@ class ListSingleProperty extends Component {
                     </div>
                 </td>
                 <td>            
-                <Address 
+                <Address
                     address1={address.address1}
                     city={address.city}
                     state={address.state}
@@ -34,9 +35,10 @@ class ListSingleProperty extends Component {
                 <td>{yearBuilt}</td>
                 <td>{`$${listPrice}`}</td>
                 <td>{`$${monthlyRent}`}</td>
+                <td>{grossYield}</td>
                 <td>
                     <div className="view-details">
-                    <Link to="/{id}">
+                    <Link to={`/${id}`}>
                         <button className="btn btn-success"
                         onClick={() => getPropertyClicked(id)}>See Details</button>
                     </Link>

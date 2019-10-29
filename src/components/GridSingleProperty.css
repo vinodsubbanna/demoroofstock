@@ -17,11 +17,16 @@
     padding: 2px;
 }
 
-.built, .financial {
+.built, .financial, .grossYield {
     padding: 8px;
     font-weight: 800;
 }
 
 .built > span, .financial > span {
     font-weight: 300;
+}
+
+.grossYield > span {
+    color: green;
+    font-size: 20px;
 }
