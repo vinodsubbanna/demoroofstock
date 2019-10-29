@@ -1,0 +1,27 @@
+.property {
+    border: 1px solid #cccccc;
+    border-radius: 4px;
+    min-width: 300px;
+    margin: 5px;
+    width: 300px;
+}
+
+.property .img-block {
+    border-bottom: 1px solid #cccccc;
+
+}
+.property .img-block img {
+    min-height: 200px;
+    height: 200px;
+    width: 300px;
+    padding: 2px;
+}
+
+.built, .financial {
+    padding: 8px;
+    font-weight: 800;
+}
+
+.built > span, .financial > span {
+    font-weight: 300;
+}
