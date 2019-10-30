@@ -7,6 +7,7 @@ import './ViewProperty.css';
 import { Link } from 'react-router-dom';
 
 export class ViewProperty extends Component {
+    
     render() {
         const { property } = this.props;
         const photos = property.resources ? property.resources.photos: [{url:require('.././assets/images/noImage.png')}];

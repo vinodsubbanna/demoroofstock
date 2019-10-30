@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import './App.css';
 import ListProperty from './components/ListProperty'
-import store from './server/store';
 import { Container, Row, Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { setView } from './actions';
-import { fetchAllProperties } from './actions'
 
 class App extends Component {
 

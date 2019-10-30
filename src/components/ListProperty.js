@@ -3,13 +3,19 @@ import { connect } from 'react-redux';
 
 import GridSingleProperty from './GridSingleProperty';
 import ListSingleProperty from './ListSingleProperty';
+import { fetchAllProperties } from '.././actions';
+
 
 class ListProperty extends Component {
+    componentDidMount() {
+        this.props.fetchAllProperties();
+    }
+
     render() {
-        const { properties, gridOrList } = this.props;
+        const { properties, gridOrList, isDataLoaded } = this.props;
         const isGrid = gridOrList === 'grid' ? true: false;
         return (
-            <React.Fragment>
+            isDataLoaded ? <React.Fragment>
                 {
                    properties.map((property) => {
                     const { physical, financial } = property;
@@ -43,14 +49,15 @@ class ListProperty extends Component {
                                 />
                    }) 
                 }
-            </React.Fragment>
+            </React.Fragment> : <div>Loading.... </div>
         )
     }
 }
 
 const mapStateToProps = (state, props) => ({
     properties: state.allProperties.properties,
-    gridOrList: props.gridOrList
+    gridOrList: props.gridOrList,
+    isDataLoaded: state.isDataLoaded
 })
 
-export default connect(mapStateToProps)(ListProperty);
+export default connect(mapStateToProps, {fetchAllProperties})(ListProperty);

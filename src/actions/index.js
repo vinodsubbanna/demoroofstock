@@ -1,27 +1,22 @@
-import helper from "../helper";
-import { FETCH_ALL_PROPERTIES, GET_PROPERTY_CLICKED, GET_VIEW_TO_DISPLAY } from '../types'
-import propertyData from '.././testdata.json';
+import { FETCH_ALL_PROPERTIES, GET_PROPERTY_CLICKED, GET_VIEW_TO_DISPLAY, IS_LOADED } from '../types'
 import store from '../server/store';
+import axios from "axios";
 
-// export const fetchAllProperties = () => async dispatch => {
-//     fetch('http://dev1-sample.azurewebsites.net/properties.json', { mode: 'no-cors'})
-//         .then(res=> console.log(res))
-//         .then(res=> dispatch({type: FETCH_ALL_PROPERTIES, payload: res}))
-//         .catch(err=>console.log(err));
-// }
-
-export const fetchAllProperties = () => ({
-    type: FETCH_ALL_PROPERTIES,
-    payload: propertyData
-});
+export const fetchAllProperties = () => dispatch => {
+    axios.get('/properties')
+        .then(res=> res.data)
+        .then(res=> dispatch({type: FETCH_ALL_PROPERTIES, payload: res}))
+        .then(() => dispatch({type: IS_LOADED, payload: true}))
+        .catch(err=>console.log(err));
+}
 
 export const getPropertyClicked = (id) => (dispatch) => {
     const properties = store.getState().allProperties.properties;
-    const property = properties.filter((prop) => prop.id === id);
+    const property = properties.find((prop) => prop.id === id);
 
     dispatch({
         type: GET_PROPERTY_CLICKED,
-        payload: property[0]
+        payload: property
     })
 }
 

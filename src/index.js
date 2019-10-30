@@ -7,13 +7,10 @@ import store from './server/store';
 import * as serviceWorker from './serviceWorker';
 import { Route, Router } from "react-router-dom";
 import { createBrowserHistory as createHistory } from 'history';
-import { fetchAllProperties } from './actions';
 import { Provider } from 'react-redux';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const history = createHistory();
-store.dispatch(fetchAllProperties());
-
 
 ReactDOM.render(
     <Provider store={store}>
